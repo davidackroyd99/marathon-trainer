@@ -13,6 +13,10 @@ getWeekNumber = () => {
   return 24 - fullWeeks;
 }
 
+getDayNumber = () => {
+  return ((today.getDay() + 6) % 7) + 1;
+}
+
 tasks = [
   ['Walk 15 min', 'Walk 4:00 Run 1:00 Complete 4x', 'Walk 20 minutes', 'Walk 3:30 Run 1:30 Complete 5x', 'Rest', 'Walk 3:30 Run 1:30 Complete 4x <br> Walk 0:30 Run 1:30 Complete 3x', 'Rest'],
   ['Walk 20 min', 'Walk 2:30 Run 2:30 Complete 5x', 'Walk 25 minutes', 'Walk 2:00 Run 3:00 Complete 5x', 'Rest', 'Walk 2:00 Run 3:00 Complete 4x <br> Walk 0:30 Run 2:30 Complete 2x', 'Rest'],
@@ -37,8 +41,9 @@ tasks = [
   ['Cross training', '5 miles', 'Strength', '5 miles', 'Rest or yoga', '20 miles', 'Rest'],
   ['Cross training', '4 miles', 'Strength', '4 miles', 'Rest or yoga', '12 miles', 'Rest'],
   ['Cross training', '3 miles', 'Strength', '4 miles', 'Rest or yoga', '6 miles', 'Rest'],
-  ['Cross training', '3 miles', 'Strength', '2 miles', 'Rest', 'Train to France!', 'God, grant me the serenity to accept the things I cannot change, the courage to change the things I can, and the wisdom to know the difference.'],
+  ['Cross training', '3 miles', 'Strength', '2 miles', 'Rest', 'Train to France!', 'God, grant me the serenity <br> to accept the things I cannot change, <br>the courage to change the things I can, <br>and the wisdom to know the difference.'],
 ];
 
 document.getElementById("week-number").innerText = getWeekNumber();
-document.getElementById("task").innerHTML = tasks[getWeekNumber() - 1][(today.getDay() + 6) % 7];
+document.getElementById("day-number").innerText = getDayNumber();
+document.getElementById("task").innerHTML = tasks[getWeekNumber() - 1][getDayNumber() - 1];
